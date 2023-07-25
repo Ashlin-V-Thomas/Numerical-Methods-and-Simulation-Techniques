@@ -2,8 +2,9 @@
 
 dataset = { 1:1 , 2:1.4142 , 3:1.7321 , 4:2} #We input data for finding square root of numbers.
 
-def interpolate(dataset,x):
+def interpolate(x):
     #The function returns the value of interpolation polynomial at x.
+    global dataset
     out = 0
     for k in dataset.keys():
         term = dataset[k]
@@ -14,4 +15,14 @@ def interpolate(dataset,x):
     return out
 
 
-print(interpolate(dataset, 2.5)) #returns an approximate value for sqrt(2.5).
+print(interpolate( 2.5)) #returns an approximate value for sqrt(2.5).
+
+#plotting the function
+import matplotlib.pyplot as plt
+import numpy as np
+
+X = np.arange(-20,20.1,0.1)
+interpolate_v = np.vectorize(interpolate)
+Y = interpolate_v(X)
+plt.plot(X,Y)
+plt.show()
