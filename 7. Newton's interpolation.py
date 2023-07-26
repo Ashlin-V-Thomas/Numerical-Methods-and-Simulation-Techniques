@@ -1,6 +1,6 @@
 #The program takes input a dataset as a dictionary and finds out a polynomial that fits all data points(except the last) and prints the value of that polynomial for certain x.
 
-dataset = { 1:0 , 2:0.3010 , 3:0.4771,  4:0.6021} #We input the dataset given by the function f(x) = logx
+dataset = { 1:0 , 2:0.3010, 3:0.4771,  4:0.6021 } #We input the dataset given by the function f(x) = logx
 keys = list(dataset.keys())
 
 def div_diff(inlist):
@@ -12,16 +12,26 @@ def div_diff(inlist):
         n = len(inlist) - 1
         return (div_diff(inlist[1:]) - div_diff(inlist[:n]))/( inlist[n] - inlist[0])
     
-def interpolate(x):
-    #The function returns the value of interpolation polynomial at x.
+def interpolate_coefficients():
+    #The function returns the list of coefficients of interpolation polynomial at x.
     global keys, dataset
-    out = dataset[keys[0]]
+    out = [dataset[keys[0]]]
     for k in range(1,len(keys)):
-        term = div_diff(keys[:k+1])
+        out.append(div_diff(keys[:k+1]))
+    return out
+
+coefficients = interpolate_coefficients()
+
+def interpolate(x):
+    global coefficients,dataset
+    out = coefficients[0]
+    for k in range(1,len(coefficients)):
+        term = coefficients[k]
         for i in range(0,k):
             term = term*(x - keys[i])
         out += term
     return out
+    
 
 print(interpolate(2.5)) #returns an approximate value of log(2.5)
         
