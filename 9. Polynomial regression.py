@@ -55,9 +55,9 @@ for i in values:
 r2 = (Sy - Sr)/Sy
 table2 = PrettyTable()
 table2.title = "Error Analysis"
-table2.add_row(["S_r" , Sr])
-table2.add_row(["Standard deviation(S_s)" , Ss])
-table2.add_row(["r^2" , r2])
+table2.add_row(["S_r" , round(Sr,4)])
+table2.add_row(["Standard deviation(S_s)" , round(Ss,4)])
+table2.add_row(["r^2" , round(r2,4)])
 print(table2)
 
 #plotting
