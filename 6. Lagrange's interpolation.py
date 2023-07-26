@@ -21,6 +21,10 @@ print(interpolate( 2.5)) #returns an approximate value for sqrt(2.5).
 import matplotlib.pyplot as plt
 import numpy as np
 
+keys = list(dataset.keys())
+values = list(dataset.values())
+plt.plot(keys,values, "o", markersize = "4")
+
 X = np.arange(-20,20.1,0.1)
 interpolate_v = np.vectorize(interpolate)
 Y = interpolate_v(X)
