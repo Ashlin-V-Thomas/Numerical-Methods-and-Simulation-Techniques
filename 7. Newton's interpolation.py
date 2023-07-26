@@ -40,7 +40,10 @@ print(interpolate(2.5)) #returns an approximate value of log(2.5)
 import matplotlib.pyplot as plt
 import numpy as np
 
-X = np.arange(-20,20.1,0.1)
+values = list(dataset.values())
+plt.plot(keys,values, "o", markersize = 4)
+
+X = np.arange(-10,10.1,0.1)
 interpolate_v = np.vectorize(interpolate)
 Y = interpolate_v(X)
 plt.plot(X,Y)
